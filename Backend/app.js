@@ -1,6 +1,6 @@
 const express = require("express");
 
-const morgon = require("morgan");
+const morgan = require("morgan");
 const productRouter = require("./routers/productRouter");
 const orderRouter = require("./routers/orderRouter");
 const uploadRouter = require("./routers/uploadRouter");
