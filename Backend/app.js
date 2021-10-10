@@ -15,9 +15,9 @@ app.use(morgan("dev"));
 
 //ROUTES
 
-app.use("./users", userRouter);
+// app.use("./users", userRouter);
 app.use(".products", productRouter);
-app.use("./orders", orderRouter);
-app.use("./uploads", uploadRouter);
+// app.use("./orders", orderRouter);
+// app.use("./uploads", uploadRouter);
 
 module.exports = app;
