@@ -1,13 +1,23 @@
-const express = require("express");
-const userController = require("../Controllers/userController");
-const router = express.Router();
+//multer = multiruta
+const express = require("expres");
+const multer = require("multer");
 
-router.route("/").get(userController.getUser).post(userController.createUser);
+import { isAuth } from "..utils/";
 
-router
-  .route("/:id")
-  .get(userController.getUser)
-  .patch(userController.createUser)
-  .delete(userController.deleteUser);
+const uploadRouter = express.Router();
 
-module.exports = router;
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename(req, file, cb) {
+    cb(null, `${Date.now()}.jpg`);
+  },
+});
+
+const upload = multer({ storage });
+uploadRouter.post("/", isAuth, upload.single("image"), (req, res) => {
+  res.send(`/${req.file.path}`);
+});
+
+export default uploadRouter;

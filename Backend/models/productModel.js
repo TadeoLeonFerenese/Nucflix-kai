@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Product = require("./productModel");
-const Orderchema = mongoose.Schema({
+const orderSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -22,4 +22,4 @@ const Orderchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Order", Orderchema);
+module.exports = mongoose.model("Order", orderSchema);
