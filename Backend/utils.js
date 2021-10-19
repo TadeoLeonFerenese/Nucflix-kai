@@ -52,14 +52,14 @@ export const isSeller = (res, req, next) => {
   if (req.user && req.user.isSeller) {
     next();
   } else {
-    res.status(401).send({ message: "Invalid Admin Token" });
+    res.status(401).send({ message: "Invalid Seller Token" });
   }
 };
 
 export const isSellerorAdmin = (req, res, next) => {
   if (req.user && (req.user.isSeller || req.user.isAdmin)) {
     next();
-  } else res.status(401).sen({ message: "Invalid Admin/Seller Token" });
+  } else res.status(401).send({ message: "Invalid Admin/Seller Token" });
 };
 
 export const mailgun = () =>
