@@ -3,7 +3,7 @@ const productController = require("../Controllers/productController");
 const router = express.Router();
 
 //Aca uso la variable de entorno ".env" que cree para llamar la ruta de auth0
-router.route(".env").get(Login_Auth0.Logout_Auth0.Profile_auth0);
+// router.route(".env").get();
 
 router
   .route("/")
