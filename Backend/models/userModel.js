@@ -1,31 +1,22 @@
 const mongoose = require("mongoose");
-const userSchema = mongoose.Schema({
-  email: {
-    type: String,
-    require: [type, "User must have a name"],
-    unique: true,
+const userSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, default: false, required: true },
+    isSeller: { type: Boolean, default: false, required: true },
+    seller: {
+      name: String,
+      logo: String,
+      description: String,
+      rating: { type: Number, default: 0, required: true },
+      numReviews: { type: Number, default: 0, required: true },
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-  },
-  lastName: {
-    type: String,
-  },
-  createAd: {
-    type: Date,
-    default: Date.now(),
-  },
-  isAdmin: { type: Boolean, default: false, required: true },
-  isSeller: { type: Boolean, default: false, required: true },
-  seller: {
-    name: String,
-    logo: String,
-    descriptions: String,
-  },
-});
-
-mongoose.exports = mongoose.model("User", userSchema);
+  {
+    timestamps: true,
+  }
+);
+const User = mongoose.model("user", userSchema);
+export default User;

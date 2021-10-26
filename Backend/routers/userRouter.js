@@ -1,73 +1,162 @@
-//multer = multiruta
-const express = require("express");
-const multer = require("multer");
-const jwt = require("jsonwebtoken");
-const router = require("./productRouter");
+import { Express } from "express";
+import { bcrypt } from "bcryptjs";
+import { expressAsyncHandler } from "express-async-handler";
+import data from "../data";
+import user from "../models/userModel";
+import { generateToken, isAdmin, isAuth, IsAuth } from "../utils";
 
-//AVERIGUAR COMO JORACA IMPORTAR ESTO PARA USARLO EN LAS VARIABLES
-// import { Login } from "";
-// import { Logout } from "";
-// const Login = require("Login");
-// const Logout = require("Logout");
-// import { isAuth } from "../utils";
+const userRouter = express.Router();
 
-const uploadRouter = express.Router();
+// HAGO EL RANKING DE LOS MEJORES VENDEDORES
+userRouter.get(
+  "top-sellers",
+  expressAsyncHandler(async (req, res) => {
+    const topSellers = await user
+      .find({ isSeller: true })
+      .sort({ "seller.rating": -1 })
+      .limit(3);
+    res.send(topSellers);
+  })
+);
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename(req, file, cb) {
-    cb(null, `${Date.now()}.jpg`);
-  },
-});
+//ESTOY INSERTANDO LA DATA DE LOS NUEVOS USARIOS
+userRouter.get(
+  "/seed",
+  expressAsyncHandler(async (req, res) => {
+    const createdUsers = await User.insertMany(data.users);
+    res.send({ createdUsers });
+  })
+);
 
-const upload = multer({ storage });
-uploadRouter.post("/", isAuth, upload.single("image"), (req, res) => {
-  res.send(`/${req.file.path}`);
-});
+//LOGIN
+userRouter.post(
+  "/signin",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        res.send({
+          _id: user._id,
+          name: user.name,
+          isAdmin: user.isAdmin,
+          isSeller: user.isSeller,
+          token: generateToken(user),
+        });
+        return;
+      }
+    }
+    res.status(401).send({ message: "Invalid Mail or Password papu" });
+  })
+);
 
-// const isAuth = (req, res) => {
-//   const token = req.header.authorization;
-//   if (authorization) {
-//     const token = authorization.slice(7, authorization.length);
-//     jwt.verify(
-//       token,
-//       process.env.JWT_SECRET || "somethingsecret",
-//       (err, decode) => {
-//         if (err) {
-//           res.status(401).send({ mesage: "invaild Token" });
-//         } else {
-//           req.user = decode;
-//           //"decode" decodifica la linea y lo anexa
-//         }
-//       }
-//     );
-//   } else {
-//     res.status(401).send({ message: "No Token" });
-//   }
-// };
+//REGISTRO
+userRouter.post(
+  "register",
+  expressAsyncHandler(async (req, res) => {
+    const user = new User({
+      id: createdUser._id,
+      name: createdUser.name,
+      email: createdUser.email,
+      isAdmin: createdUser.isAdmin,
+      token: generateToken(createdUser),
+    });
+  })
+);
 
-// export const isAdmin = (res, req) => {
-//   if (req.user && req.user.isAdmin) {
-//   } else {
-//     res.status(401).send({ message: "Invalid Admin Token" });
-//   }
-// };
+//Busca el ID del obj USUARIO Y SI NO ESTA DA ERROR 404, PERO
+//SI LO ENCUENTRA DA LOS DATOS DEL USUARIO
+userRouter.get(
+  "/:id",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404).send({ message: "User Not Found ameo" });
+    }
+  })
+);
 
-// export const isSeller = (res, req) => {
-//   if (req.user && req.user.isSeller) {
-//   } else {
-//     res.status(401).send({ message: "Invalid Seller Token" });
-//   }
-// };
+//ARMA EL PERFIL LLAMANDO EL OBJD ESDE MONGO
+userRouter.put(
+  "/profile",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = reqbody.email || user.email;
+      if (user.isSeller) {
+        user.seller.name = req.body.sellerName || user.seller.name;
+        user.seller.logo = req.body.sellerLogo || user.seller.logo;
+        user.seller.description =
+          req.body.sellerDescription || user.seller.description;
+      }
+      if (req.body.password) {
+        user.password = bcrypt.hashSync(req.body.password, 8);
+      }
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        isSeller: user.isSeller,
+        token: generateToken(updatedUser),
+      });
+    }
+  })
+);
 
-// //aca tengo que poner las condiciones para que reconozca que Logea o deslogea
-// export const isSellerorAdmin = (res, req) => {
-//   if ((req.user && req.user.Login) || req.user.Logout) {
-//   } else {
-//     res.status(401).send({ message: "invalid Login/Logout" });
-//   }
-// };
+//HACE UNR EQUEST DE LA DATA DE LOS USUARIOS
+userRouter.get(
+  "/",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.find({});
+    res.send(users);
+  })
+);
 
-module.exports = router;
+//ACA ACLARO A MONGO QUE BORRE TAL IP
+userRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.dinfById(req.params.id);
+    if (user) {
+      if (user.email === "admin@example.com") {
+        res.status(400).send({ message: "Can Not Delete Admin User" });
+        return;
+      }
+      const deleteUser = await user.remove();
+      res.send({ message: "User Delete", user: deleteUser });
+    } else {
+      res.status(404).send({ message: "User Not Found" });
+    }
+  })
+);
+
+//ACA CREA LA LOS USUARIOS EN MONGO Y EN CASO DE QUE NO ESTE DA ERROR
+userRouter.put(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.isSeller = Boolean(req.body.isSeller);
+      user.isAdmin = Boolean(req.body.isAdmin);
+      // user.isAdmin = req.body.isAdmin || user.isAdmin;
+      const updateUser = await user.save();
+      res.send({ message: "User Update", user: updateUser });
+    } else {
+      res.status(404).send({ message: "User Not Found" });
+    }
+  })
+);
+
+export default userRouter;
