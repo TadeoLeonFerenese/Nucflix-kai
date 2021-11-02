@@ -1,16 +1,27 @@
+//multer sirve para manejar los servicios de los paquetes
+const multer = require("multer");
 const express = require("express");
-const uploadController = require("../Controllers/uploadController");
-const router = express.Router();
+const { isAuth } = require("../utils.js");
 
-router
-  .route("/")
-  .get(uploadController.getUploads)
-  .post(uploadController.createUploads);
+const uploadRouter = express.Router();
 
-router
-  .route("/:id")
-  .get(uploadController.getUploads)
-  .patch(uploadController.createUploads)
-  .delete(uploadController.deleteUploads);
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename(req, file, cb) {
+    cb(null, `${date.now()}.jpg`);
+  },
+});
 
-module.exports = router;
+const upload = multer({ storage });
+
+uploadRouter.post(
+  "/",
+  isAuth,
+  upload.single("image", (req, res) => {
+    res.send(`${req.file.path}`);
+  })
+);
+
+module.exports = uploadRouter;
