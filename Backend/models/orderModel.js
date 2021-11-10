@@ -1,6 +1,6 @@
-const Mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
-const orderSchema = new Mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
     orderItems: [
       {
