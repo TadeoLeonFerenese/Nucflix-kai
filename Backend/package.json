@@ -1,29 +1,20 @@
 {
-  "name": "apibackend",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "api de ecommerce",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-async-handler": "^1.2.0",
-    "install": "^0.13.0",
-    "jsonwebtoken": "^8.5.1",
-    "mailgun": "^0.5.0",
-    "mailgun-js": "^0.22.0",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
-    "multer": "^1.4.3",
-    "nodemon": "^2.0.13",
-    "npm": "^8.1.1",
+    "nodemon": "^2.0.15",
     "path": "^0.12.7"
   }
 }
