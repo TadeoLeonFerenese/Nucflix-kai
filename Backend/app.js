@@ -1,8 +1,16 @@
+//req = request = peticion del cliente
+//res = response = respuesta del servidor
+//cliente = navegador
 const express = require("express");
-const app = express ();
+const path = require("path");
+const app = express();
 
-//RUTAS 
-// const routes = require("./routers/index.routes") esto es igual que  lo de abajo 
-app.use(require("./routers/index.routes"))
+//RUTAS
+app.use(require("./routes/index.routes"));
 
+//ARCHIVOS ESTATICOS
+app.use(express.static(path.join(__dirname, "../public")));
 
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
