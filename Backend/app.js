@@ -9,8 +9,8 @@ const app = express();
 app.use(require("./routes/index.routes"));
 
 //ARCHIVOS ESTATICOS
-app.use(express.static(path.join(__dirname, "../public")));
+// app.use(express.static(path.join(__dirname, "../public")));
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, "../public/index.html"));
+// });
