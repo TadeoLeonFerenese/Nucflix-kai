@@ -1,12 +1,17 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+var MongoClient = require("mongodb").MongoClient;
 dotenv.config({ path: "./mongoDb.env" });
-// const app = require("./app");
-const connectDB = require("./database/connection");
+// const connectDB = require("./database/connection");
 const app = express();
+
 //DB Ejecuta el archivo CONNECTION
-connectDB();
+MongoClient.connect(5000, (err, db) => {
+  // if (err) throw err;
+  console.log("Mongodb is running");
+  // db.close();
+});
 
 //START SERVER
 
@@ -15,7 +20,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on http:${PORT}`);
 });
 
-//ARCHIVOS ESTATICOS
+// ARCHIVOS ESTATICOS
 app.use(express.static(path.join(__dirname, "./public")));
 
 app.use((req, res) => {

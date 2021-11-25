@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const MongoClient = require("mongodb");
 
 const connectDB = async () => {
   try {
     //cadena de conexion para MongoDB
-    const con = await mongoose.connect(process.env.DATA_BASE, {
+    const con = await mongodb.connect(process.env.DATA_BASE || 5000, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
