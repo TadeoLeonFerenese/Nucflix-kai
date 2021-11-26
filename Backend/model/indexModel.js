@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const { Schema } = mongoose
-const IndexModel = require("../model/indexModel")
 const IndexSchema = new Schema({
     name: String
 })
