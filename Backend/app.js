@@ -7,4 +7,6 @@ const app = express();
 
 //RUTAS
 app.use(require("./routes/indexRoutes"));
+app.use(require("./routes/moviesRoutes"));
+app.use(require("./routes/authRoutes"))
 
