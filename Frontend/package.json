@@ -12,7 +12,8 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
     "auth0": "^2.37.0",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "sass": "^1.44.0"
   },
   "browserslist": {
     "production": [
