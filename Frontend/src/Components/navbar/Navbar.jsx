@@ -1,7 +1,13 @@
 import "./navbar.scss";
 import { Notifications, ArrowDropDown, Search } from "@mui/icons-material";
 import { LoginButton } from "../auth0/Login";
+import { LogoutButton } from "../auth0/Logout";
+import { Profile } from "../auth0/Profile";
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Navbar = () => {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="navbar">
       <div className="container">
@@ -17,11 +23,24 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
-          <Search />
+          <Search className="icon"/>
           <span>KID</span>
-          <Notifications />
-          <LoginButton />
-          <ArrowDropDown />
+          <Notifications className="icon" />
+          {isAuthenticated ? (
+            
+            <div className="profile">
+              <Profile />
+              <div className="options">
+                <span>Options</span>
+                <LogoutButton className="logout" />
+              </div>
+              <ArrowDropDown className="icon"/>
+            </div>
+            
+          ) : (
+            <LoginButton className="login"/>
+          )}
+          
         </div>
       </div>
     </div>
