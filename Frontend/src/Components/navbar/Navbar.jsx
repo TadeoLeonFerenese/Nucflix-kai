@@ -1,4 +1,5 @@
 import "./navbar.scss";
+import { useState } from "react"
 import { Notifications, ArrowDropDown, Search } from "@mui/icons-material";
 import { LoginButton } from "../auth0/Login";
 import { LogoutButton } from "../auth0/Logout";
@@ -7,15 +8,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
+  const  [isScrolled, setIsScrolled]  = useState(false)
+
+
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
 
   return (
-    <div className="navbar">
+    <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <img
-            src="https://img.huffingtonpost.com/asset/5e1d9ca3210000530014a453.jpeg?cache=jAElMMUneT&ops=1778_1000"
-            alt=""
-          />
+          <img src="/img/nucflix.png" alt="" />
+
           <span>HomePage</span>
           <span>Series</span>
           <span>Movies</span>
@@ -23,24 +29,21 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
-          <Search className="icon"/>
-          <span>KID</span>
+          <Search className="icon" />
+          <span>KIDS</span>
           <Notifications className="icon" />
           {isAuthenticated ? (
-            
             <div className="profile">
               <Profile />
               <div className="options">
                 <span>Options</span>
                 <LogoutButton className="logout" />
               </div>
-              <ArrowDropDown className="icon"/>
+              <ArrowDropDown className="icon" />
             </div>
-            
           ) : (
-            <LoginButton className="login"/>
+            <LoginButton className="login" />
           )}
-          
         </div>
       </div>
     </div>
