@@ -62,7 +62,7 @@
         }
 
         button {
-          padding: 10px;
+          padding: 5px;
           color: var(--secondari-colo);
           border: none;
           cursor: pointer;
@@ -76,8 +76,8 @@
         &:hover {
           .options {
             display: flex;
-            top: 45px;
-            right: 20px;
+            top: 48px;
+            right: 18px;
             flex-direction: column;
             position: absolute;
           }
