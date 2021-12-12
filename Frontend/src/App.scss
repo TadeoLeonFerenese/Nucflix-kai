@@ -8,3 +8,10 @@
   --secondari-color: #fafafa;
   --tertiary-color: gray;
 }
+
+.LBTN {
+  color: var(--secondari-color);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}

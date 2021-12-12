@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import { useState } from "react"
+import { useState } from "react";
 import { Notifications, ArrowDropDown, Search } from "@mui/icons-material";
 import { LoginButton } from "../auth0/Login";
 import { LogoutButton } from "../auth0/Logout";
@@ -8,8 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
-  const  [isScrolled, setIsScrolled]  = useState(false)
-
+  const [isScrolled, setIsScrolled] = useState(false);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -36,7 +35,7 @@ const Navbar = () => {
             <div className="profile">
               <Profile />
               <div className="options">
-                <span>Options</span>
+                <button>Options</button>
                 <LogoutButton className="logout" />
               </div>
               <ArrowDropDown className="icon" />

@@ -5,11 +5,31 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, React } from "react";
+import { axios } from "axios";
 
 export default function ListItem({ index }) {
+  const blabla = () => {
+    axios.get(
+      "https://api.themoviedb.org/1/movie/now_playing?api_key=1865f43a0549ca50d341dd9ab8b29f49&language=es-ES&page=1"
+    );
+  };
+  console.log(blabla);
+  // const config = {
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //   },
+  // };
+  // const instance = axios.({
+  //   baseURL:
+  //     "https://api.themoviedb.org/1/movie/now_playing?api_key=1865f43a0549ca50d341dd9ab8b29f49&language=es-ES&page=1",
+  //   https: config,
+  // });
+  // console.log(instance);
+
   const [isHovered, setIsHovered] = useState(false);
-  const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  const trailer =
+    "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
   return (
     <div
       className="listItem"
@@ -21,31 +41,30 @@ export default function ListItem({ index }) {
         src="https://1.bp.blogspot.com/-c-952NTLUAc/V6LVtVQwx7I/AAAAAAAAFvY/u1mza5y8UqI4ttTTpYvoISPh9USiiKONgCLcB/s1600/gt2.jpg"
         alt=""
       />
-      
+
       {isHovered && (
         <>
-      <video src={trailer} autoPlay={true} loop />
-      <div className="itemInfo">
-        <div className="icons">
-          <PlayArrow className="icon"/>
-          <Add className="icon"/>
-          <ThumbUpAltOutlined className="icon"/>
-          <ThumbDownOutlined className="icon"/>
-        </div>
-        <div className="itemInfoTop">
-          <span>1 hour 14 mins</span>
-          <span className="limit">+16</span>
-          <span>1999</span>
-        </div>
-        <div className="desc">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus,
-          nostrum. Cum vero, odio consequuntur.
-        </div>
-        <div className="genre">Action</div>
-      </div> 
-      </>
+          <video src={trailer} autoPlay={true} loop />
+          <div className="itemInfo">
+            <div className="icons">
+              <PlayArrow className="icon" />
+              <Add className="icon" />
+              <ThumbUpAltOutlined className="icon" />
+              <ThumbDownOutlined className="icon" />
+            </div>
+            <div className="itemInfoTop">
+              <span>1 hour 14 mins</span>
+              <span className="limit">+16</span>
+              <span>1999</span>
+            </div>
+            <div className="desc">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Delectus, nostrum. Cum vero, odio consequuntur.
+            </div>
+            <div className="genre">Action</div>
+          </div>
+        </>
       )}
-     
     </div>
   );
 }
