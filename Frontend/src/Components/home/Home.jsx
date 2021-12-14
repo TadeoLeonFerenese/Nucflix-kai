@@ -8,10 +8,10 @@ const home = () => {
     <div className="home">
       <Navbar />
       <Featured />
-      <List />
-      <List />
-      <List />
-      <List />
+      <List page={1} />
+      <List page={2} />
+      <List page={3} />
+      <List page={4} />
     </div>
   );
 };
