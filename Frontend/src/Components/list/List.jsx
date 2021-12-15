@@ -55,7 +55,7 @@ export default function List({ page }) {
   console.log(peliculas && peliculas);
   return (
     <div className="list">
-      <span className="listTitle">Continue to watch</span>
+      <span className="listTitle"> Page {page} </span>
       <div className="wrapper">
         <ArrowBackIosOutlined
           className="sliderArrow left"

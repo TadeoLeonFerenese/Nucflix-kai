@@ -28,6 +28,7 @@ export default function ListItem({ index, pelicula }) {
         <>
           <video src={trailer} autoPlay={true} loop />
           <div className="itemInfo">
+            <span className="titulo_hover">{pelicula.original_title}</span>
             <div className="icons">
               <PlayArrow className="icon" />
               <Add className="icon" />
@@ -37,13 +38,9 @@ export default function ListItem({ index, pelicula }) {
             <div className="itemInfoTop">
               <span>1 hour 14 mins</span>
               <span className="limit">+16</span>
-              <span>1999</span>
+              <span>{pelicula.release_date.split("-")[0]}</span>
             </div>
-            <div className="desc">
-              <p>{pelicula.overview.substring(0, 200)}...</p>
-              {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Delectus, nostrum. Cum vero, odio consequuntur. */}
-            </div>
+            <div className="desc">{pelicula.overview.substring(0, 180)}...</div>
           </div>
         </>
       )}
