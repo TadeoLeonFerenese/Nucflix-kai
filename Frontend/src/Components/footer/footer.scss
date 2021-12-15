@@ -1,0 +1,35 @@
+.footerInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+    color: var(--secondari-color);
+    flex-direction: column;
+    width: 100%;
+    min-height: 6rem;
+
+
+    .icons{
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--secondari-color);
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+
+    .infoMid{
+        margin: 5px 0 5px 0;
+        padding: 5px;
+        font-size: 20px;
+        color: var(--secondari-color);
+    }
+
+    .infoBot{
+        margin-top: 5px;
+        padding: 5px;
+        font-size: 17px;
+        color: var(--tertiary-color);
+    }
+}

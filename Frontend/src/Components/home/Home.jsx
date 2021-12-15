@@ -2,6 +2,7 @@ import "./home.scss";
 import Navbar from "../navbar/Navbar";
 import Featured from "../featured/Featured";
 import List from "../list/List";
+import Footer from "../footer/Footer"
 
 const home = () => {
   return (
@@ -12,6 +13,7 @@ const home = () => {
       <List page={2} />
       <List page={3} />
       <List page={4} />
+      <Footer />
     </div>
   );
 };
