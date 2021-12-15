@@ -19,13 +19,15 @@ export default function ListItem({ index, pelicula }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src={`https://image.tmdb.org/t/p/w185/${pelicula.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/w500/${pelicula.backdrop_path}`}
         alt="img"
       />
+      <span className="titulo">{pelicula.original_title}</span>
 
       {isHovered && (
         <>
           <video src={trailer} autoPlay={true} loop />
+          <span>{pelicula.original_title}</span>
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow className="icon" />
@@ -39,10 +41,10 @@ export default function ListItem({ index, pelicula }) {
               <span>1999</span>
             </div>
             <div className="desc">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Delectus, nostrum. Cum vero, odio consequuntur.
+              <p>{pelicula.overview.substring(0, 200)}...</p>
+              {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Delectus, nostrum. Cum vero, odio consequuntur. */}
             </div>
-            <div className="genre">Action</div>
           </div>
         </>
       )}
