@@ -6,7 +6,11 @@ const path = require("path");
 const app = express();
 
 //RUTAS
-app.use(require("./routes/indexRoutes"));
+app.use(require("./routes/listRoutes"));
 app.use(require("./routes/moviesRoutes"));
-app.use(require("./routes/authRoutes"))
+app.use(require("./routes/userRoutes"));
 
+//MIDDLEWARES
+
+// parseo y lectura del body
+app.use(express.json());
