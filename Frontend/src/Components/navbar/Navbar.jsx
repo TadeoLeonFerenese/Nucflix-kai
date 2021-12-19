@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <img src="/img/nucflix.png" alt="" />
+          <img src="/img/nucflix.png" alt="logo" />
 
           <span>HomePage</span>
           <span>Series</span>
