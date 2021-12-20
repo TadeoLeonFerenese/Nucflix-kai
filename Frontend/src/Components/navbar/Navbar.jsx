@@ -5,16 +5,18 @@ import { LoginButton } from "../auth0/Login";
 import { LogoutButton } from "../auth0/Logout";
 import { Profile } from "../auth0/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import { element } from "prop-types";
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   const [isScrolled, setIsScrolled] = useState(false);
+
   // const [busqueda, setBusqueda] = useState("");
 
-  const handleChange = (e) => {
-    setBusqueda(e.target.value);
-    filtrar(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setBusqueda(e.target.value);
+  //   filtrar(e.target.value);
+  // };
 
   // const filtrar = (terminoBusqueda) => {
   //   var resultadosBusqeda = peliculas.filter((elemento) => {
@@ -34,6 +36,7 @@ const Navbar = () => {
   //   peliculas(resultadosBusqeda);
   // };
 
+  
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -52,12 +55,14 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
+
           <div className="inputbusqueda">
-            <input type="text" placeholder="Busqueda" />
-            <button className="buttonSearch">
+          <button className="buttonSearch">
+            <input element={element}  type="text" placeholder="Busqueda" />
               <Search className="icon" />
             </button>
           </div>
+         
           <span>KIDS</span>
           <Notifications className="icon" />
           {isAuthenticated ? (
