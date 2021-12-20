@@ -15,6 +15,34 @@
     background-color: var(--main-color);
   }
 
+  input {
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    border: none;
+    cursor: text;
+    width: 70%;
+    height: 28px;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--secondari-colo);
+
+    &::placeholder {
+      color: rgb(245, 245, 245);
+    }
+  }
+
+  .inputbusqueda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .buttonSearch {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--secondari-colo);
+  }
+
   .container {
     padding: 20px;
     display: flex;

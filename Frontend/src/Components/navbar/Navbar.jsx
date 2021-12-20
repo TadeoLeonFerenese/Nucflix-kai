@@ -9,6 +9,30 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   const [isScrolled, setIsScrolled] = useState(false);
+  // const [busqueda, setBusqueda] = useState("");
+
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
+  };
+
+  // const filtrar = (terminoBusqueda) => {
+  //   var resultadosBusqeda = peliculas.filter((elemento) => {
+  //     if (
+  //       elemento.original_title
+  //         .toString()
+  //         .toLoweCase()
+  //         .includes(terminoBusqueda.toLowerCase()) ||
+  //       elemento.title
+  //         .toString()
+  //         .toLoweCase()
+  //         .includes(terminoBusqueda.toLowerCase())
+  //     ) {
+  //       return elemento;
+  //     }
+  //   });
+  //   peliculas(resultadosBusqeda);
+  // };
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -28,7 +52,12 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
-          <Search className="icon" />
+          <div className="inputbusqueda">
+            <input type="text" placeholder="Busqueda" />
+            <button className="buttonSearch">
+              <Search className="icon" />
+            </button>
+          </div>
           <span>KIDS</span>
           <Notifications className="icon" />
           {isAuthenticated ? (

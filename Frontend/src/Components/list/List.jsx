@@ -65,9 +65,14 @@ export default function List({ page }) {
         <div className="container" ref={listRef}>
           {peliculas?.length > 0 &&
             !error &&
-            peliculas.map((pelicula, index) => {
+            peliculas.map((pelicula, index, resultadosBusqeda) => {
               return (
-                <ListItem key={pelicula.id} pelicula={pelicula} index={index} />
+                <ListItem
+                  resultadosBusqeda={resultadosBusqeda}
+                  key={pelicula.id}
+                  pelicula={pelicula}
+                  index={index}
+                />
               );
             })}
         </div>
