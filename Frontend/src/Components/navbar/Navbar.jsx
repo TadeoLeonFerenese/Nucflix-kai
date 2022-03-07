@@ -5,38 +5,19 @@ import { LoginButton } from "../auth0/Login";
 import { LogoutButton } from "../auth0/Logout";
 import { Profile } from "../auth0/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
-import { element } from "prop-types";
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // const [busqueda, setBusqueda] = useState("");
+  const mostrarInput = () => {
+    document.getElementById("input").style.display = "block";
+  };
+  const ocultarInput = () => {
+    let busqueda = document.getElementById("input");
+    if (busqueda.value == "") busqueda.style.display = "none";
+  }; //PREGUNTAR COMO HACER PARA QUE CAMBIE EL DISPLAY SIN TENER QUE HACER ESTAS DOS FUNCTIONS;
 
-  // const handleChange = (e) => {
-  //   setBusqueda(e.target.value);
-  //   filtrar(e.target.value);
-  // };
-
-  // const filtrar = (terminoBusqueda) => {
-  //   var resultadosBusqeda = peliculas.filter((elemento) => {
-  //     if (
-  //       elemento.original_title
-  //         .toString()
-  //         .toLoweCase()
-  //         .includes(terminoBusqueda.toLowerCase()) ||
-  //       elemento.title
-  //         .toString()
-  //         .toLoweCase()
-  //         .includes(terminoBusqueda.toLowerCase())
-  //     ) {
-  //       return elemento;
-  //     }
-  //   });
-  //   peliculas(resultadosBusqeda);
-  // };
-
-  
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -55,14 +36,18 @@ const Navbar = () => {
           <span>My List</span>
         </div>
         <div className="right">
-
           <div className="inputbusqueda">
-          <button className="buttonSearch">
-            <input element={element}  type="text" placeholder="Busqueda" />
+            <input
+              id="input"
+              type="text"
+              placeholder="Busqueda"
+              onBlur={ocultarInput}
+            />
+            <button className="buttonSearch" onClick={mostrarInput}>
               <Search className="icon" />
             </button>
           </div>
-         
+
           <span>KIDS</span>
           <Notifications className="icon" />
           {isAuthenticated ? (
