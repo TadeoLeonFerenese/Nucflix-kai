@@ -19,12 +19,9 @@ export default function Register() {
     <div className="register">
       <div className="top">
         <div className="wrapper">
-          <img className="imgLogo" 
-            src="/img/nucflix.png" 
-            alt="logo" 
-           />
-        <button className="loginButton">Sign In</button>
-         </div>
+          <img className="imgLogo"  src="/img/nucflix.png" alt="logo" />
+          <button className="loginButton">Sign In</button>
+        </div>
       </div> 
 
       <div className="container">
