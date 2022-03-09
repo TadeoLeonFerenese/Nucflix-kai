@@ -1,4 +1,8 @@
-.register {
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.login {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
@@ -8,86 +12,78 @@
     ),
     url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
   background-size: cover;
-  position: relative;
-  
+
   .top {
     .wrapper {
-       padding:20px 50px;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-
-     .imgLogo{
-       height: 40px;
-      }
-
-    .loginButton{
-        background-color: #dc1a28;
-        color: #fafafa;
-        border: none;
-        border-radius: 2px;
-        padding: 5px 15px;
-        font-size: 16px;
-        font-weight: 500;
-        cursor: pointer;
-    }
-   }
-  }
-
-  .container{  
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    position: absolute;
-
-    h1{
-      color:var(--secondari-color) ;
-      font-size: 50px;
-      margin: 10px;
-    }
-
-    h2{
-      color: var(--secondari-color);
-      margin: 20px;
-    }
-
-    p{
-      color: var(--secondari-color);
-      font-size: 20px;
-    }
-
-    .input{
-      width: 50%;
-      height: 50px;
+      padding: 20px 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 20px;
-      background-color: #fafafa;
-      border-radius: 5px;
-      border:none;
+
+      .imgLogo {
+        height: 25%;
+      }
     }
-      
-    input {
-     flex: 9;
-     height: 100%;
-     border: none;
-     padding: 0 10px;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    form {
+      width: 300px;
+      height: 300px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      border-radius: 5px;
+      background-color: var(--main-color);
     }
 
-    .registerButton{
-      flex: 3;
-      height: 100%;
-      background-color: #dc1a28;
-      color: #fafafa;
+    input {
+      height: 40px;
+      margin: 2px;
+      border-radius: 5px;
+      background-color: whitesmoke;
+      color: gray;
+      padding-left: 10px;
+
+      &::placeholder {
+        color: black;
+      }
+    }
+
+    button {
+      height: 40px;
+      margin: 2px;
+      border-radius: 5px;
+      background-color: red;
+      color: white;
       border: none;
-      font-size: 22px;
+      font-size: 18px;
+      font-weight: 500;
       cursor: pointer;
+    }
+
+    span {
+      margin: 2px;
+      color: lightgray;
+      b {
+        color: white;
+      }
+    }
+    small {
+      margin: 2px;
     }
   }
 }

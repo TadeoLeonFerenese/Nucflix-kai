@@ -1,5 +1,6 @@
 import "./App.scss";
-import Register from "./pages/registerManual/Register";
+import Login from "./pages/login/Login";
+// import Register from "./pages/registerManual/Register";
 
 
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <div >
       <header>
-        < Register/>
+        < Login/>
       </header>
     </div>
   );
