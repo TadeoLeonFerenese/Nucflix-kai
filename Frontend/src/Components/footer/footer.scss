@@ -18,19 +18,46 @@
     color: var(--secondari-color);
     margin: 10px 200px 10px 200px;
     cursor: pointer;
+
+    .iconoRSociales {
+      margin-right: 15px;
+      font-size: 30px;
+    }
   }
 
   .infoMid {
-    margin: 10px 200px 10px 200px;
+    margin: 15px 200px 15px 200px;
     padding: 5px;
-    font-size: 20px;
-    color: var(--secondari-color);
+    display: flex;
+    flex-direction: column;
+
+    .listas {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: baseline;
+    }
+
+    ul {
+      margin-right: 40px;
+    }
+
+    button {
+      width: 100%;
+      color: var(--tertiary-color);
+      text-align: start;
+      border: none;
+      background-color: transparent;
+      font-size: medium;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
+    }
   }
 
   .infoBot {
     margin: 5px 200px 0 200px;
     padding: 5px;
-    font-size: 17px;
+    font-size: 14px;
     color: var(--tertiary-color);
   }
 }

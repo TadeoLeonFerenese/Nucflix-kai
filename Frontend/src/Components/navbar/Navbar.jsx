@@ -29,11 +29,11 @@ const Navbar = () => {
         <div className="left">
           <img src="/img/nucflix.png" alt="logo" />
 
-          <span>HomePage</span>
+          <span>Inicio</span>
           <span>Series</span>
-          <span>Movies</span>
-          <span>New and Popular</span>
-          <span>My List</span>
+          <span>Películas</span>
+          <span>Novedades populares</span>
+          <span>Mi Lista</span>
         </div>
         <div className="right">
           <div className="inputbusqueda">
@@ -48,7 +48,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          <span>KIDS</span>
+          <button className="buttonSearch">Niños</button>
           <Notifications className="icon" />
           {isAuthenticated ? (
             <div className="profile">
