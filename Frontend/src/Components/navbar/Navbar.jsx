@@ -50,7 +50,19 @@ const Navbar = () => {
 
           <button className="buttonSearch">Niños</button>
           <Notifications className="icon" />
-          {isAuthenticated ? (
+          <img
+            src="https://i.pinimg.com/originals/d8/70/20/d87020c70b0bf5eec4918874fa7d0f9f.jpg"
+            alt="avatar"
+          />
+          <div className="profile">
+            <ArrowDropDown className="icon" />
+            <div className="options">
+              <button>Opciones</button>
+              <button>Logout</button>
+            </div>
+          </div>
+          {/* ESTO ES PARA UTILIZAR AUTH0 PARA EL LOGIN,LOGOUT y PROFILE  */}
+          {/* {isAuthenticated ? (
             <div className="profile">
               <Profile />
               <div className="options">
@@ -61,7 +73,7 @@ const Navbar = () => {
             </div>
           ) : (
             <LoginButton className="login" />
-          )}
+          )} */}
         </div>
       </div>
     </div>
