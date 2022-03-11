@@ -51,7 +51,7 @@ const Navbar = () => {
           <button className="buttonSearch">Niños</button>
           <Notifications className="icon" />
           <img
-            src="https://i.pinimg.com/originals/d8/70/20/d87020c70b0bf5eec4918874fa7d0f9f.jpg"
+            src="https://i.pinimg.com/474x/bd/ee/4c/bdee4c328550aaf21aa9f43fd19e2136.jpg"
             alt="avatar"
           />
           <div className="profile">

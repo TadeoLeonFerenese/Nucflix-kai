@@ -60,12 +60,14 @@
     width: 100%;
 
     .left {
+      display: flex;
+      align-items: center;
+
       span {
         margin: 0px 10px 0px 10px;
         cursor: pointer;
       }
-      display: flex;
-      align-items: center;
+
       img {
         height: 30px;
       }
