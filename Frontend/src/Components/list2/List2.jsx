@@ -10,17 +10,32 @@ import "./List2.scss";
 import { Navigation, Pagination } from "swiper";
 
 export default function App() {
-  const [swiperNext, setSwiperNext] = useState(0);
+  const [swiperRef, setSwiperRef] = useState(null);
+  const appendNumber = useRef(9);
+  const prependNumber = useRef(1);
+  // Creo un array with x cantidad de slides
+  const [slides, setSlides] = useState(
+    Array.from({ length: 12 }).map((_, index) => `Slide ${index + 1}`)
+  );
 
-  const handleClick = (direction) => {
-    if (direction === "left" && swiperNext > 0) {
-      setSwiperNext(swiperNext - 1);
-    }
-
-    if (direction === "right" && swiperNext < 5.5) {
-      setSwiperNext(swiperNext + 1);
-    }
+  const prepend = () => {
+    setSlides([
+      `Slide ${prependNumber.current - 2}`,
+      `Slide ${prependNumber.current - 1}`,
+      ...slides,
+    ]);
+    prependNumber.current = prependNumber.current - 2;
+    swiperRef.slideTo(swiperRef.activeIndex + 2, 0);
   };
+  // const handleClick = (direction) => {
+  //   if (direction === "left" && swiperNext > 0) {
+  //     setSwiperNext(swiperNext - 1);
+  //   }
+
+  //   if (direction === "right" && swiperNext < 5.5) {
+  //     setSwiperNext(swiperNext + 1);
+  //   }
+  // };
   return (
     <div className="container">
       <Swiper
