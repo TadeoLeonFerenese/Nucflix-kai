@@ -1,6 +1,5 @@
 html,
 body {
-  position: relative;
   height: 100%;
 }
 
@@ -18,11 +17,12 @@ body {
   margin: 15px 5px 15px 5px;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .swiper-wrapper {
-  padding: 20px;
+  position: relative;
+  padding: 20px 0;
 }
 .swiper {
   width: 100%;
@@ -30,20 +30,33 @@ body {
 }
 
 .custom_prev {
-  background-color: var(--main--color);
+  background: rgba(22, 22, 22, 0.5);
+  position: absolute;
+  height: 66%;
+  width: 50px;
+  left: 0;
+  top: 40px;
+  z-index: 99;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 .custom_next {
-  background-color: var(--main--color);
+  background: rgba(22, 22, 22, 0.5);
+  position: absolute;
+  height: 66%;
+  width: 50px;
+  right: 0;
+  top: 40px;
+  z-index: 99;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 .swiper-slide {
+  position: absolute;
   cursor: pointer;
   text-align: center;
   font-size: 18px;

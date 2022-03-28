@@ -40,7 +40,7 @@ export default function ListItem({ index, pelicula }) {
               <span className="limit">+16</span>
               <span>{pelicula.release_date.split("-")[0]}</span>
             </div>
-            <div className="desc">{pelicula.overview.substring(0, 180)}...</div>
+            
           </div>
         </>
       )}

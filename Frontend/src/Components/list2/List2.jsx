@@ -1,5 +1,7 @@
 // Import Swiper React components
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "../listitem2/listitem2.scss";
 
 // import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import SwiperCore, { Navigation, A11y } from "swiper";
@@ -11,6 +13,7 @@ import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from "@mui/icons-material";
+import { ListItem2 } from "../listitem2/ListItem2";
 
 // install Swiper modules
 SwiperCore.use([Navigation, A11y]);
@@ -33,8 +36,8 @@ export default () => {
             prevEl: ".custom_prev",
           }}
           pagination={{ clickable: true }}
-          // onSwiper={(swiper) => console.log(swiper)}
-          // onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
             <img
