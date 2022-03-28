@@ -29,7 +29,7 @@ export default () => {
           className="swiper"
           modules={[Navigation, A11y]}
           spaceBetween={10}
-          slidesPerView={5.5}
+          slidesPerView={5.2}
           slide
           navigation={{
             nextEl: ".custom_next",
