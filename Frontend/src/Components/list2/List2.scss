@@ -23,15 +23,11 @@ body {
   padding: 20px 0;
 }
 
-// .wrapper {
-//   position: relative;
-//   height: 190px;
-//   padding: 20px 0;
-// }
-// .swiper {
-//   width: 100%;
-//   height: 100%;
-// }
+.swiper-wrapper {
+  height: 168px !important;
+  display: flex;
+  align-items: center;
+}
 
 .custom_prev {
   background: rgba(22, 22, 22, 0.5);
