@@ -1,6 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../listitem2/listitem2.scss";
+import ButtonSwiper from "./ButtonSwiper";
 
 // import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import SwiperCore, { Navigation, A11y } from "swiper";
@@ -12,31 +13,28 @@ import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from "@mui/icons-material";
-import { ListItem2 } from "../listitem2/ListItem2";
 
 // install Swiper modules
 SwiperCore.use([Navigation, A11y]);
 
 export default () => {
   return (
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <button class="custom_prev">
-          <ArrowBackIosOutlined />
-        </button>
+    <div className="swiper-container">
+      <div className="swiper-wrapper">
+        <ButtonSwiper />
         <Swiper
           className="swiper"
           modules={[Navigation, A11y]}
           spaceBetween={10}
           slidesPerView={5.2}
-          slide
+          slide={true}
           navigation={{
             nextEl: ".custom_next",
             prevEl: ".custom_prev",
           }}
           pagination={{ clickable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
             <img
@@ -93,7 +91,7 @@ export default () => {
             />
           </SwiperSlide>
         </Swiper>
-        <button class="custom_next">
+        <button className="custom_next">
           <ArrowForwardIosOutlined />
         </button>
       </div>
