@@ -10,11 +10,11 @@ const home = () => {
     <div className="home">
       <Navbar />
       <Featured />
-      <List2 />
-      <List2 />
-      <List2 />
-      <List2 />
-      <List2 />
+      <List2 id="list1" />
+      <List2 id="list2" />
+      <List2 id="list3" />
+      <List2 id="list4" />
+      <List2 id="list5" />
       <Footer />
     </div>
   );

@@ -1,7 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../listitem2/listitem2.scss";
-import ButtonSwiper from "./ButtonSwiper";
 
 // import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import SwiperCore, { Navigation, A11y } from "swiper";
@@ -17,24 +16,33 @@ import {
 // install Swiper modules
 SwiperCore.use([Navigation, A11y]);
 
-export default () => {
+export default (props) => {
+  const btnBack = props.id + "back";
+  const btnNext = props.id + "next";
+
   return (
     <div className="swiper-container">
       <div className="swiper-wrapper">
-        <ButtonSwiper />
+        {/* <ButtonSwiper id={btnBack} /> */}
+        <button className="custom_prev" id={btnBack}>
+          <ArrowBackIosOutlined />
+        </button>
         <Swiper
           className="swiper"
           modules={[Navigation, A11y]}
           spaceBetween={10}
           slidesPerView={5.2}
-          slide={true}
+          slide="true"
           navigation={{
-            nextEl: ".custom_next",
-            prevEl: ".custom_prev",
+            nextEl: "#" + btnNext,
+            // prevEl: ".custom_prev",
+            // !IMPORTANT: pongo un "#" para referenciar de que esto es un id,
+            // "."  es para acceder al atributo de un obj
+            prevEl: "#" + btnBack,
           }}
           pagination={{ clickable: true }}
-          // onSwiper={(swiper) => console.log(swiper)}
-          // onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
             <img
@@ -91,7 +99,7 @@ export default () => {
             />
           </SwiperSlide>
         </Swiper>
-        <button className="custom_next">
+        <button className="custom_next" id={btnNext}>
           <ArrowForwardIosOutlined />
         </button>
       </div>
