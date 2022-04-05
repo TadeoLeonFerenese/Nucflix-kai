@@ -1,0 +1,63 @@
+.footerInfo {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  background-color: var(--main-color);
+  color: var(--secondari-color);
+  flex-direction: column;
+  width: 100%;
+  min-height: 6rem;
+  margin-top: 100px;
+  margin-bottom: 20px;
+
+  .icons {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--secondari-color);
+    margin: 10px 200px 10px 200px;
+    cursor: pointer;
+
+    .iconoRSociales {
+      margin-right: 15px;
+      font-size: 30px;
+    }
+  }
+
+  .infoMid {
+    margin: 15px 200px 15px 200px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+    .listas {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: baseline;
+    }
+
+    ul {
+      margin-right: 40px;
+    }
+
+    button {
+      width: 100%;
+      color: var(--tertiary-color);
+      text-align: start;
+      border: none;
+      background-color: transparent;
+      font-size: medium;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
+    }
+  }
+
+  .infoBot {
+    margin: 5px 200px 0 200px;
+    padding: 5px;
+    font-size: 14px;
+    color: var(--tertiary-color);
+  }
+}

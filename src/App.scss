@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-color: #0b0b0b;
+  --secondari-color: #fafafa;
+  --tertiary-color: gray;
+}
+
+.LBTN {
+  color: var(--secondari-color);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
